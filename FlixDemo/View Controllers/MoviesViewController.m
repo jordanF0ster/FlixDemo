@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSArray *movies;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (weak, nonatomic) IBOutlet UISearchBar *movieSearchBar;
 
 @end
 
@@ -27,6 +28,7 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.movieSearchBar.delegate = self;
     
     [self fetchMovies];
     
@@ -119,6 +121,15 @@
     return cell;
 }
 
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
+    self.movieSearchBar.showsCancelButton = YES;
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    self.movieSearchBar.showsCancelButton = NO;
+    self.movieSearchBar.text = @"";
+    [self.movieSearchBar resignFirstResponder];
+}
 
 #pragma mark - Navigation
 
