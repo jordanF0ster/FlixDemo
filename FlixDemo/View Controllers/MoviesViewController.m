@@ -16,7 +16,8 @@
 @property (nonatomic, strong) NSArray *movies;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
-@property (weak, nonatomic) IBOutlet UISearchBar *movieSearchBar;
+@property (strong, nonatomic) UISearchController *searchController;
+@property (strong, nonatomic) NSArray *filteredData;
 
 @end
 
@@ -28,13 +29,29 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    self.movieSearchBar.delegate = self;
     
     [self fetchMovies];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
+    // Search bar
+    // Initializing with searchResultsController set to nil means that
+    // searchController will use this view controller to display the search results
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    self.searchController.searchResultsUpdater = self;
+    
+    // If we are using this same view controller to present the results
+    // dimming it out wouldn't make sense. Should probably only set
+    // this to yes if using another controller to display the search results.
+    self.searchController.dimsBackgroundDuringPresentation = NO;
+    
+    [self.searchController.searchBar sizeToFit];
+    self.tableView.tableHeaderView = self.searchController.searchBar;
+    
+    // Sets this view controller as presenting view controller for the search interface
+    self.definesPresentationContext = YES;
     
 }
 
@@ -82,6 +99,7 @@
             //NSLog(@"%@", dataDictionary);
             
             self.movies = dataDictionary[@"results"];
+            self.filteredData = self.movies;
             for (NSDictionary *movie in self.movies) {
                 NSLog(@"%@", movie[@"title"]);
             }
@@ -91,6 +109,7 @@
             // Stop the activity indicator
             // Hides automatically if "Hides When Stopped" is enabled
             [self.activityIndicator stopAnimating];
+            
         }
         [self.refreshControl endRefreshing];
     }];
@@ -98,14 +117,14 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.movies.count;
+    return self.filteredData.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     MovieCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
     
-    NSDictionary *movie = self.movies[indexPath.row];
+    NSDictionary *movie = self.filteredData[indexPath.row];
     cell.titleLabel.text = movie[@"title"];
     cell.synopsysLabel.text = movie[@"overview"];
     
@@ -121,14 +140,22 @@
     return cell;
 }
 
-- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar {
-    self.movieSearchBar.showsCancelButton = YES;
-}
-
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-    self.movieSearchBar.showsCancelButton = NO;
-    self.movieSearchBar.text = @"";
-    [self.movieSearchBar resignFirstResponder];
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+    
+    NSString *searchText = searchController.searchBar.text;
+    if (searchText) {
+        
+        if (searchText.length != 0) {
+            NSPredicate *pred = [NSPredicate predicateWithFormat:@"title contains[cd] %@", searchText];
+            self.filteredData = [self.movies filteredArrayUsingPredicate:pred];
+        }
+        else {
+            self.filteredData = self.movies;
+        }
+        
+        
+    }
+    [self.tableView reloadData];
 }
 
 #pragma mark - Navigation
