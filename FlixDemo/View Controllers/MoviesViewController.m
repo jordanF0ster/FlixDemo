@@ -22,6 +22,7 @@
 @implementation MoviesViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     
     self.tableView.dataSource = self;
@@ -32,9 +33,14 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchMovies) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
 }
 
 - (void) fetchMovies {
+    
+    // Start the activity indicator
+    [self.activityIndicator startAnimating];
+
     // Do any additional setup after loading the view.
     
     NSURL *url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
@@ -47,7 +53,7 @@
         else {
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
             
-            NSLog(@"%@", dataDictionary);
+            //NSLog(@"%@", dataDictionary);
             
             self.movies = dataDictionary[@"results"];
             for (NSDictionary *movie in self.movies) {
@@ -55,6 +61,10 @@
             }
             
             [self.tableView reloadData];
+            
+            // Stop the activity indicator
+            // Hides automatically if "Hides When Stopped" is enabled
+            [self.activityIndicator stopAnimating];
         }
         [self.refreshControl endRefreshing];
     }];
@@ -90,6 +100,7 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     UITableViewCell *tappedCell = sender;
@@ -98,7 +109,7 @@
     
     DetailsViewController *detailsViewController = [segue destinationViewController];
     detailsViewController.movie = movie;
-    NSLog(@"tapping on movie!");
+    //NSLog(@"tapping on movie!");
 }
 
 
