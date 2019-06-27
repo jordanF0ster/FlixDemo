@@ -128,7 +128,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p2c-AC-Vn7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="214" y="1200"/>
+            <point key="canvasLocation" x="910" y="1173"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="MCQ-w3-QQJ">
@@ -152,7 +152,7 @@
         <scene sceneID="cmb-py-dRt">
             <objects>
                 <navigationController id="Cra-G9-aCu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="qgP-Qz-z6T"/>
+                    <tabBarItem key="tabBarItem" title="Item" selectedImage="superhero_tabbar_item" id="qgP-Qz-z6T"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pSM-qs-c90">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -169,7 +169,7 @@
         <scene sceneID="eas-63-bun">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yHV-N3-aiG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Now Playing" id="EqZ-XF-o0n"/>
+                    <tabBarItem key="tabBarItem" title="Now Playing" selectedImage="now_playing_tabbar_item" id="EqZ-XF-o0n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oKV-wJ-0uA">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -218,6 +218,7 @@
                                         </view>
                                         <connections>
                                             <outlet property="posterView" destination="F88-dZ-k8M" id="F2r-h9-ePY"/>
+                                            <segue destination="KLx-gd-za3" kind="show" id="Pvc-ML-3kD"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -236,4 +237,11 @@
             <point key="canvasLocation" x="1629.5999999999999" y="302.6986506746627"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="now_playing_tabbar_item" width="21" height="21"/>
+        <image name="superhero_tabbar_item" width="21" height="23"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Pvc-ML-3kD"/>
+    </inferredMetricsTieBreakers>
 </document>
