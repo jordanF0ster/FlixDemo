@@ -48,7 +48,31 @@
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
     NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error != nil) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No Network Connection" message:@"Get Some better Wifi bro" preferredStyle:(UIAlertControllerStyleAlert)];
+            
+            /*
+            // create a cancel action
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                // handle cancel response here. Doing nothing will dismiss the view.
+            }];
+            // add the cancel action to the alertController
+            [alert addAction:cancelAction];
+            */
+            
+            // create an OK action
+            UIAlertAction *tryAgainAction = [UIAlertAction actionWithTitle:@"Try Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                // handle response here.
+            }];
+            // add the OK action to the alert controller
+            [alert addAction:tryAgainAction];
+            
+            [self presentViewController:alert animated:YES completion:^{
+                // optional code for what happens after the alert controller has finished presenting
+            }];
+            
             NSLog(@"%@", [error localizedDescription]);
+            [self fetchMovies];
+            
         }
         else {
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
@@ -90,7 +114,7 @@
     NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
     cell.posterView.image = nil;
     [cell.posterView setImageWithURL:posterURL];
-//    cell.textLabel.text = movies[@"title"];
+    //    cell.textLabel.text = movies[@"title"];
     
     return cell;
 }
