@@ -27,7 +27,7 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="159" id="Nd9-nn-nTI" customClass="MovieCell">
                                         <rect key="frame" x="0.0" y="28" width="375" height="159"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nd9-nn-nTI" id="qo3-k0-huV">
+                                        <tableViewCellContentView key="contentView" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nd9-nn-nTI" id="qo3-k0-huV">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="158.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -58,7 +58,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.0125881172472701" green="0.027673345223897063" blue="0.062277363989637347" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.41736355629999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <connections>
@@ -145,11 +145,27 @@
                         <outlet property="posterView" destination="kwo-hg-L5g" id="KaN-wQ-age"/>
                         <outlet property="ratingLabel" destination="lcM-Nf-bHJ" id="Hzz-73-Wtm"/>
                         <outlet property="synopsysLabel" destination="7XW-Nt-IcO" id="RQl-VI-HnG"/>
+                        <segue destination="T8Y-AO-d9G" kind="show" id="Dwy-Ki-MjE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p2c-AC-Vn7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="910" y="1173"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="mXr-ZJ-gtI">
+            <objects>
+                <viewController id="T8Y-AO-d9G" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="afP-IW-Y2p">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="677-Ms-pmd"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZJK-cj-fvE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="910" y="1970"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="MCQ-w3-QQJ">
@@ -283,6 +299,6 @@
         <image name="superhero_tabbar_item" width="21" height="23"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Pvc-ML-3kD"/>
+        <segue reference="UXD-5U-Bcc"/>
     </inferredMetricsTieBreakers>
 </document>

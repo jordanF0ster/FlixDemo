@@ -171,7 +171,7 @@
     if (searchText) {
         
         if (searchText.length != 0) {
-            NSPredicate *pred = [NSPredicate predicateWithFormat:@"title beginswith[cd] %@", searchText];
+            NSPredicate *pred = [NSPredicate predicateWithFormat:@"title contains[cd] %@", searchText];
             self.filteredData = [self.movies filteredArrayUsingPredicate:pred];
 
         }
