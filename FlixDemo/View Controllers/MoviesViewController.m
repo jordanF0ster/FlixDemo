@@ -143,7 +143,7 @@
                                  
                                  // imageResponse will be nil if the image is cached
                                  if (imageResponse) {
-                                     NSLog(@"Image was NOT cached, fade in image");
+                                     //NSLog(@"Image was NOT cached, fade in image");
                                      weakSelf.posterView.alpha = 0.0;
                                      weakSelf.posterView.image = image;
                                      
@@ -153,7 +153,7 @@
                                      }];
                                  }
                                  else {
-                                     NSLog(@"Image was cached so just update the image");
+                                     //NSLog(@"Image was cached so just update the image");
                                      weakSelf.posterView.image = image;
                                  }
                              }
@@ -171,7 +171,7 @@
     if (searchText) {
         
         if (searchText.length != 0) {
-            NSPredicate *pred = [NSPredicate predicateWithFormat:@"title beginswith[cd] %@", searchText];
+            NSPredicate *pred = [NSPredicate predicateWithFormat:@"title contains[cd] %@", searchText];
             self.filteredData = [self.movies filteredArrayUsingPredicate:pred];
 
         }
@@ -192,8 +192,9 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     UITableViewCell *tappedCell = sender;
+    NSLog(@"%@", sender);
     NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
-    NSDictionary *movie = self.movies[indexPath.row];
+    NSDictionary *movie = self.filteredData[indexPath.row];
     
     DetailsViewController *detailsViewController = [segue destinationViewController];
     detailsViewController.movie = movie;
