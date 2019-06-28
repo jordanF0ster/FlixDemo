@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSArray *movies;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
+
 @end
 
 @implementation MoviesGridViewController

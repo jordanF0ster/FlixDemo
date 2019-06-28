@@ -133,8 +133,31 @@
     NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
     
     NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
+    NSURLRequest *posterRequest = [NSURLRequest requestWithURL:posterURL cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     cell.posterView.image = nil;
-    [cell.posterView setImageWithURL:posterURL];
+    __weak MovieCell *weakSelf = cell;
+    [cell.posterView setImageWithURLRequest:posterRequest placeholderImage:nil
+                             success:^(NSURLRequest *imageRequest, NSHTTPURLResponse *imageResponse, UIImage *image) {
+                                 
+                                 // imageResponse will be nil if the image is cached
+                                 if (imageResponse) {
+                                     NSLog(@"Image was NOT cached, fade in image");
+                                     weakSelf.posterView.alpha = 0.0;
+                                     weakSelf.posterView.image = image;
+                                     
+                                     //Animate UIImageView back to alpha 1 over 0.3sec
+                                     [UIView animateWithDuration:0.3 animations:^{
+                                         weakSelf.posterView.alpha = 1.0;
+                                     }];
+                                 }
+                                 else {
+                                     NSLog(@"Image was cached so just update the image");
+                                     weakSelf.posterView.image = image;
+                                 }
+                             }
+                             failure:^(NSURLRequest *request, NSHTTPURLResponse * response, NSError *error) {
+                                 // do something for the failure condition
+                             }];
     //    cell.textLabel.text = movies[@"title"];
     
     return cell;
@@ -146,8 +169,9 @@
     if (searchText) {
         
         if (searchText.length != 0) {
-            NSPredicate *pred = [NSPredicate predicateWithFormat:@"title contains[cd] %@", searchText];
+            NSPredicate *pred = [NSPredicate predicateWithFormat:@"title beginswith[cd] %@", searchText];
             self.filteredData = [self.movies filteredArrayUsingPredicate:pred];
+
         }
         else {
             self.filteredData = self.movies;

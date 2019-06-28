@@ -53,6 +53,7 @@
                                             </subviews>
                                             <color key="backgroundColor" red="0.0125881172472701" green="0.027673345223897063" blue="0.062277363989637347" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.012588117249999999" green="0.027673345219999999" blue="0.062277363990000001" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <outlet property="posterView" destination="WwR-3t-eF0" id="rM9-uC-kIa"/>
                                             <outlet property="synopsysLabel" destination="swC-i2-ofh" id="3BD-nK-MfB"/>
