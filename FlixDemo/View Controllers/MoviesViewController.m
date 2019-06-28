@@ -30,6 +30,7 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
+    
     [self fetchMovies];
     
     self.refreshControl = [[UIRefreshControl alloc] init];
@@ -90,7 +91,7 @@
             }];
             
             NSLog(@"%@", [error localizedDescription]);
-            [self fetchMovies];
+            [self viewDidLoad];
             
         }
         else {
@@ -100,9 +101,9 @@
             
             self.movies = dataDictionary[@"results"];
             self.filteredData = self.movies;
-            for (NSDictionary *movie in self.movies) {
-                NSLog(@"%@", movie[@"title"]);
-            }
+//            for (NSDictionary *movie in self.movies) {
+//                NSLog(@"%@", movie[@"title"]);
+//            }
             
             [self.tableView reloadData];
             
@@ -127,6 +128,7 @@
     NSDictionary *movie = self.filteredData[indexPath.row];
     cell.titleLabel.text = movie[@"title"];
     cell.synopsysLabel.text = movie[@"overview"];
+    cell.movieRatingsLabel.text = [NSString stringWithFormat:@"%@ / 10", movie[@"vote_average"]];
     
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
     NSString *posterURLString = movie[@"poster_path"];

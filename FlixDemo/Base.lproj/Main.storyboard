@@ -31,10 +31,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="158.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WwR-3t-eF0">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="launch_image" translatesAutoresizingMaskIntoConstraints="NO" id="WwR-3t-eF0">
                                                     <rect key="frame" x="15" y="11" width="91" height="137"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="0.80244090030000004" green="0.37259538640000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <color key="backgroundColor" red="0.012588117249999999" green="0.027673345219999999" blue="0.062277363990000001" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Suicide Squad" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ov6-wk-c1H">
                                                     <rect key="frame" x="129" y="11" width="231" height="30"/>
@@ -44,17 +44,25 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The Best Movie" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swC-i2-ofh">
-                                                    <rect key="frame" x="129" y="40" width="231" height="108"/>
+                                                    <rect key="frame" x="129" y="69" width="231" height="79"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vhf-N2-bm0">
+                                                    <rect key="frame" x="129" y="49" width="231" height="18"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" red="0.0125881172472701" green="0.027673345223897063" blue="0.062277363989637347" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.012588117249999999" green="0.027673345219999999" blue="0.062277363990000001" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <connections>
+                                            <outlet property="movieRatingsLabel" destination="vhf-N2-bm0" id="tD3-kE-ioV"/>
                                             <outlet property="posterView" destination="WwR-3t-eF0" id="rM9-uC-kIa"/>
                                             <outlet property="synopsysLabel" destination="swC-i2-ofh" id="3BD-nK-MfB"/>
                                             <outlet property="titleLabel" destination="ov6-wk-c1H" id="S2L-Bx-jca"/>
@@ -81,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="214" y="303"/>
+            <point key="canvasLocation" x="213.59999999999999" y="302.6986506746627"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="HoA-HH-rOF">
@@ -103,7 +111,7 @@
                                         <rect key="frame" x="8" y="106" width="89" height="142"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wBX-iL-O2m">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wBX-iL-O2m">
                                         <rect key="frame" x="105" y="181" width="262" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
@@ -111,7 +119,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7XW-Nt-IcO">
-                                        <rect key="frame" x="8" y="256" width="351" height="21"/>
+                                        <rect key="frame" x="8" y="285" width="351" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcM-Nf-bHJ">
+                                        <rect key="frame" x="8" y="256" width="42" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -128,6 +143,7 @@
                         <outlet property="TitleLabel" destination="wBX-iL-O2m" id="rIf-Vg-1PE"/>
                         <outlet property="backdropView" destination="XPW-sT-UGF" id="IF8-4g-lyf"/>
                         <outlet property="posterView" destination="kwo-hg-L5g" id="KaN-wQ-age"/>
+                        <outlet property="ratingLabel" destination="lcM-Nf-bHJ" id="Hzz-73-Wtm"/>
                         <outlet property="synopsysLabel" destination="7XW-Nt-IcO" id="RQl-VI-HnG"/>
                     </connections>
                 </viewController>
@@ -142,8 +158,8 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cpS-f0-Cjv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" red="0.012588117249999999" green="0.027673345219999999" blue="0.062277363990000001" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="barTintColor" white="0.0" alpha="0.41736355629999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="yHV-N3-aiG" kind="relationship" relationship="viewControllers" id="zW7-IA-I4J"/>
@@ -158,10 +174,16 @@
         <scene sceneID="cmb-py-dRt">
             <objects>
                 <navigationController id="Cra-G9-aCu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" selectedImage="superhero_tabbar_item" id="qgP-Qz-z6T"/>
+                    <tabBarItem key="tabBarItem" title="Item" selectedImage="superhero_tabbar_item" id="qgP-Qz-z6T">
+                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pSM-qs-c90">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="0.41736355629999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="Ak1-Kg-h7k" kind="relationship" relationship="rootViewController" id="tFb-cz-5Um"/>
@@ -175,11 +197,17 @@
         <scene sceneID="eas-63-bun">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yHV-N3-aiG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Now Playing" selectedImage="now_playing_tabbar_item" id="EqZ-XF-o0n"/>
+                    <tabBarItem key="tabBarItem" title="Now Playing" selectedImage="now_playing_tabbar_item" id="EqZ-XF-o0n">
+                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oKV-wJ-0uA">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="0.41736355633802819" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -198,10 +226,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M7k-xs-bMp">
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nxG-hh-GDk">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.012588117249999999" green="0.027673345219999999" blue="0.062277363990000001" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="Iyk-HH-LV9">
                                     <size key="itemSize" width="122" height="180"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -236,6 +269,7 @@
                     <navigationItem key="navigationItem" title="Movies" id="tb7-DU-tVv"/>
                     <connections>
                         <outlet property="collectionView" destination="nxG-hh-GDk" id="QOR-8B-sse"/>
+                        <outlet property="searchBarPlaceholder" destination="M7k-xs-bMp" id="Oc4-Zv-1od"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uB6-oo-8cq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -244,10 +278,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="launch_image" width="138" height="139"/>
         <image name="now_playing_tabbar_item" width="21" height="21"/>
         <image name="superhero_tabbar_item" width="21" height="23"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UXD-5U-Bcc"/>
+        <segue reference="Pvc-ML-3kD"/>
     </inferredMetricsTieBreakers>
 </document>

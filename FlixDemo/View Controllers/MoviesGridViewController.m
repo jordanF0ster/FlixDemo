@@ -11,10 +11,13 @@
 #import "UIImageView+AFNetworking.h"
 #import "DetailsViewController.h"
 
-@interface MoviesGridViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface MoviesGridViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UISearchResultsUpdating>
 
 @property (nonatomic, strong) NSArray *movies;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (strong, nonatomic) UISearchController *searchController;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBarPlaceholder;
+@property (strong, nonatomic) NSArray *filteredData;
 
 
 @end
@@ -37,6 +40,23 @@
     CGFloat itemWidth = (self.collectionView.frame.size.width - layout.minimumLineSpacing * (postersPerLine - 1)) / postersPerLine;
     CGFloat itemHeight = 1.5 * itemWidth;
     layout.itemSize = CGSizeMake(itemWidth, itemHeight);
+    
+    // Search bar
+    // Initializing with searchResultsController set to nil means that
+    // searchController will use this view controller to display the search results
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
+    self.searchController.searchResultsUpdater = self;
+    
+    // If we are using this same view controller to present the results
+    // dimming it out wouldn't make sense. Should probably only set
+    // this to yes if using another controller to display the search results.
+    self.searchController.dimsBackgroundDuringPresentation = NO;
+    
+    [self.searchController.searchBar sizeToFit];
+    [self.searchBarPlaceholder addSubview: self.searchController.searchBar];
+    
+    self.collectionView.contentInsetAdjustmentBehavior = NO;
+    self.definesPresentationContext = YES;
 }
 
 - (void) fetchMovies {
@@ -53,8 +73,9 @@
             NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                         
             self.movies = dataDictionary[@"results"];
-            [self.collectionView reloadData];
+            self.filteredData = self.movies;
         }
+        [self.collectionView reloadData];
     }];
     [task resume];
 }
@@ -80,7 +101,7 @@
     
     MovieCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MovieCollectionCell" forIndexPath:indexPath];
     
-    NSDictionary *movie = self.movies[indexPath.item];
+    NSDictionary *movie = self.filteredData[indexPath.item];
     NSString *baseURLString = @"https://image.tmdb.org/t/p/w500";
     NSString *posterURLString = movie[@"poster_path"];
     NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
@@ -94,8 +115,26 @@
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return self.movies.count;
+    return self.filteredData.count;
 }
 
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
+    
+    NSString *searchText = searchController.searchBar.text;
+    if (searchText) {
+        
+        if (searchText.length != 0) {
+            NSPredicate *pred = [NSPredicate predicateWithFormat:@"title beginswith[cd] %@", searchText];
+            self.filteredData = [self.movies filteredArrayUsingPredicate:pred];
+            
+        }
+        else {
+            self.filteredData = self.movies;
+        }
+        
+        
+    }
+    [self.collectionView reloadData];
+}
 
 @end
